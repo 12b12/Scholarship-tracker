@@ -51,14 +51,14 @@ function displayAIResults(name, deadline, amount, aiAnalysisResults) {
     const output = document.getElementById('output');
     const scholarshipInfo = document.createElement('div');
 
-    scholarshipInfo.innerHTML = `
+   /* scholarshipInfo.innerHTML = `
         <p>Scholarship: ${name}</p>
         <p>Deadline: ${deadline}</p>
         <p>Amount: ${amount}</p>
         <p>Eligibility Criteria: ${aiAnalysisResults.eligibilityCriteria}</p>
         <p>Required Documents: ${aiAnalysisResults.requiredDocuments}</p>
-        <p>Recommended Scholarships: ${aiAnalysisResults.recommendedScholarships.join(', ')}</p>
-    `;
+        <p>Recommended Scholarships: ${aiAnalysisResults.recommendedScholarships.join(', ')}</p> */
+    
 
     output.appendChild(scholarshipInfo);
 
