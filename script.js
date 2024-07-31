@@ -7,10 +7,16 @@ function addScholarship() {
     const amount = document.getElementById('amount').value;
 
     if (name && deadline && amount) {
-        const scholarship = {name, deadline, amount, applied: false};
-        scholarships.push(scholarship);
-        document.getElementById('output').innerText = `Added: ${name}`;
-        simulateAIAnalysis(name, deadline, amount);
+        // Check if the scholarship already exists
+        const existingScholarship = scholarships.find(scholarship => scholarship.name === name && scholarship.deadline === deadline && scholarship.amount === amount);
+        if (existingScholarship) {
+            document.getElementById('output').innerText = 'This scholarship has already been added.';
+        } else {
+            const scholarship = {name, deadline, amount, applied: false};
+            scholarships.push(scholarship);
+            document.getElementById('output').innerText = `Added: ${name}`;
+            updateTotalAmount();
+        }
     } else {
         document.getElementById('output').innerText = 'Please fill in all required fields (Name, Deadline, Amount).';
     }
@@ -35,45 +41,7 @@ function markAsApplied() {
     }
 }
 
-function simulateAIAnalysis(name, deadline, amount) {
-    setTimeout(function () {
-        const aiAnalysisResults = {
-            eligibilityCriteria: 'Based on academic performance and community involvement.',
-            requiredDocuments: 'Transcripts, recommendation letters, and a personal statement.',
-            recommendedScholarships: ['Merit Scholarship', 'Community Service Award']
-        };
-
-        displayAIResults(name, deadline, amount, aiAnalysisResults);
-    }, 1000);
+function updateTotalAmount() {
+    totalAmount = scholarships.reduce((sum, scholarship) => sum + parseFloat(scholarship.amount), 0);
+    document.getElementById('totalAmount').innerText = `Total Amount: ${totalAmount.toFixed(2)}`;
 }
-
-function displayAIResults(name, deadline, amount, aiAnalysisResults) {
-    const output = document.getElementById('output');
-    const scholarshipInfo = document.createElement('div');
-
-   /* scholarshipInfo.innerHTML = `
-        <p>Scholarship: ${name}</p>
-        <p>Deadline: ${deadline}</p>
-        <p>Amount: ${amount}</p>
-        <p>Eligibility Criteria: ${aiAnalysisResults.eligibilityCriteria}</p>
-        <p>Required Documents: ${aiAnalysisResults.requiredDocuments}</p>
-        <p>Recommended Scholarships: ${aiAnalysisResults.recommendedScholarships.join(', ')}</p> */
-    
-
-    output.appendChild(scholarshipInfo);
-
-    const scholarship = {
-        name,
-        deadline,
-        amount,
-        applied: false,
-        notapplied: false
-    };
-    scholarships.push(scholarship);
-
-    totalAmount += parseFloat(amount);
-    document.getElementById('totalAmount').innerText = totalAmount.toFixed(2);
-}
-
-
-

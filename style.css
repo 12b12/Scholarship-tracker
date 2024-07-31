@@ -2,9 +2,8 @@ body {
     font-family: Arial, sans-serif;
     align-items: center;
     justify-content: center;
-    background-color:rgba(34, 27, 26, 0.13);
+    background-color: #d3d3d3; /* Light grey background color */
 }
-
 
 .container {
     max-width: 400px;
@@ -12,14 +11,13 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
+    background-color: #fff; /* White background for container */
 }
-
 
 label {
     display: block;
     margin-bottom: 5px;
 }
-
 
 input {
     width: 100%;
@@ -27,11 +25,9 @@ input {
     margin-bottom: 10px;
 }
 
-
 #output {
     text-align: right; /* Align the text to the right within the output div */
 }
-
 
 button {
     background-color: rgba(128, 128, 128, 0.171);
